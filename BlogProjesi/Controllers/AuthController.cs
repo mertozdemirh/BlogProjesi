@@ -1,5 +1,6 @@
 ﻿using BlogProjesi.Models.data;
 using BlogProjesi.Models.entity;
+using BlogProjesi.Models.ViewModels.Auth.Register;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,16 @@ namespace BlogProjesi.Controllers
         [HttpPost, ValidateAntiForgeryToken]
 
         public IActionResult Login(User user) 
+        {
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Register(RegisterViewModel registerViewModel)
         {
             return View();
         }
