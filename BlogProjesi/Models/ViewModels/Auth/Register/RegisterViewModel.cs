@@ -11,6 +11,7 @@ namespace BlogProjesi.Models.ViewModels.Auth.Register
         [Required]
         public string UserName { get; set; }
         [Required]
+        [RegularExpression("[a-zA-Z0-9.-]{8,}$", ErrorMessage = "Şifre minimum 8 karakter olmalıdır")]
         public string Password { get; set; }
     }
 }

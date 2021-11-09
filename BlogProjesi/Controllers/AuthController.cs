@@ -63,5 +63,11 @@ namespace BlogProjesi.Controllers
             TempData["message"] = "Başarıyla kayıt olundu";
             return RedirectToAction("Login", "Auth");
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("user");
+            return RedirectToAction("Login", "Auth");
+        }
     }
 }

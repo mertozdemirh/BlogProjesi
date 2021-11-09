@@ -106,6 +106,7 @@
                                     @if (@HttpContextAccessor.HttpContext.Session.GetString("user") != null)
                                     {
                                         <h2>Hoşgeldin @HttpContextAccessor.HttpContext.Session.GetString("user")</h2>
+										<p><a asp-controller="Auth" asp-action="Logout"></a></p>
                                     }
                                     else
                                     {
