@@ -2,6 +2,7 @@
 using BlogProjesi.Models.entity;
 using BlogProjesi.Models.ViewModels.Auth.Login;
 using BlogProjesi.Models.ViewModels.Auth.Register;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace BlogProjesi.Controllers
             {
                 if (_db.Users.Any(x => x.UserName == loginViewModel.UserName && x.Password == loginViewModel.Password))
                 {
+                    HttpContext.Session.SetString("user", loginViewModel.UserName);
                     return RedirectToAction("Index", "Home");
                 }              
                 

@@ -1,6 +1,7 @@
 using BlogProjesi.Models.data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,8 @@ namespace BlogProjesi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<UygulamaDbContext>(options => options.UseSqlServer
             (Configuration.GetConnectionString("conString")
             ));
@@ -50,6 +53,7 @@ namespace BlogProjesi
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
