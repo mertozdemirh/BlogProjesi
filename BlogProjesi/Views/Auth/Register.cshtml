@@ -5,24 +5,35 @@
 }
 
 <section>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <h3>Form</h3>
     <form method="post" asp-controller="Auth" asp-action="Register">
+
         <div class="row gtr-uniform">
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" type="text"  value="" placeholder="Kullanıcı Adı" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" placeholder="Şifre" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
 
 
             <div class="col-12">
                 <ul class="actions">
-                    <li><input type="submit" value="Send Message" /></li>
+                    <li><input type="submit" value="Kayıt Ol" /></li>
                     
                 </ul>
             </div>
         </div>
     </form>
+    <ul>
+        <li>
+            <a asp-controller="Auth" asp-action="Login" class="button large">Zaten bir hesabınız var mı?</a>
+        </li>
+    </ul>
 </section>
